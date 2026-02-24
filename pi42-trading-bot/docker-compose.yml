@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+
+  trading-bot:
+
+    image: ghcr.io/khajanjoon/trading-bot:latest
+
+    build: .
+
+    container_name: pi42-bot
+
+    restart: unless-stopped
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - config:/app/config
+
+    environment:
+      - API_KEY=${API_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+
+volumes:
+  config:

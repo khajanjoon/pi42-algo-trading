@@ -1,0 +1,13 @@
+{
+  "symbols": {
+    "XPTINR": {
+      "capital": 10000,
+      "min_qty": 0.005,
+      "enabled": true
+    }
+  },
+
+  "rise_percent": 3,
+  "tp_percent": 1.5,
+  "cooldown": 20
+}
