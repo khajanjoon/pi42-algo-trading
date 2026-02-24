@@ -4,23 +4,22 @@ services:
 
   trading-bot:
 
-    image: ghcr.io/khajanjoon/trading-bot:latest
-
-    build: .
-
     container_name: pi42-bot
+
+    build:
+      context: .
+      dockerfile: Dockerfile
 
     restart: unless-stopped
 
     ports:
       - "5000:5000"
 
-    volumes:
-      - config:/app/config
-
     environment:
-      - API_KEY=${API_KEY}
-      - SECRET_KEY=${SECRET_KEY}
+      API_KEY: ${API_KEY}
+      SECRET_KEY: ${SECRET_KEY}
 
-volumes:
-  config:
+    volumes:
+      - ./config.json:/app/config.json
+
+    command: sh -c "python bot.py & python web.py"
